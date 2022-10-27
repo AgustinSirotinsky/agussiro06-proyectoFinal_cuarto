@@ -15,8 +15,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Consolas=BD.ListarConsolas();
         return View();
     }
+    public Consola MostrarInformacionAjax(string _NombreConsola)
+        {
+            System.Console.WriteLine(_NombreConsola);
+            return BD.DetalleConsola(_NombreConsola);
+        }
 
     public IActionResult Minijuego()
     {
