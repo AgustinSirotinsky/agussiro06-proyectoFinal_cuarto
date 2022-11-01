@@ -20,11 +20,14 @@ public class HomeController : Controller
     }
     public Consola MostrarInformacionAjax(string _NombreConsola)
         {
-            System.Console.WriteLine(_NombreConsola);
             return BD.DetalleConsola(_NombreConsola);
         }
 
     public IActionResult Minijuego()
+    {
+        return View();
+    }
+    public IActionResult Usuario()
     {
         return View();
     }
