@@ -1,7 +1,7 @@
 ﻿function MostrarInformacion(NombreC){
     $.ajax({
         url: '/Home/MostrarInformacionAjax',
-        data: {_NombrConsola: NombrC},
+        data: {_NombreConsola: NombreC},
         type: 'GET',
         dataType: 'json',
         success: 
