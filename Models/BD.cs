@@ -10,7 +10,7 @@ public class BD
     private static List<Juego> ListadoJuegos= new List<Juego>();
     private static List<Consola> ListadoConsolas= new List<Consola>();
     //CAMBIAR SERVIDOR 
-    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-031;DataBase=ConsoleWorld;Trusted_Connection=True;";
+    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-030;DataBase=ConsoleWorld;Trusted_Connection=True;";
     public static List<Consola> ListarConsolas ()
     {
         using(SqlConnection db = new SqlConnection(_connectionstring)){
