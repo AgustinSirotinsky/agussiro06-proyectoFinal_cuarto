@@ -11,19 +11,36 @@
         foreach (Consola objConsola in ViewBag.Consolas){
             <div class="col-md-2">
                 <div class="card" >
-                    <img class="card-img-top" src="@objConsola.Portada" alt="Card image cap">
+                    <img class="card-img-top" src="FotoConsola/@objConsola.Portada" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@objConsola.Nombre</h5>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConsola" onclick="MostrarInformacion('@objConsola.Nombre')">Ver info</button>
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionConsola(@objConsola.idConsola)"><img src="VERINFO.png" class="w-100"></a>
                     </div>
                 </div>
             </div>
         }
     }   
 </div>
-
+<h1>Todos los juegos</h1>
+<div class="row">
+    @{
+        foreach (Juego objJuego in ViewBag.Juegos){
+            <div class="col-md-2">
+                <div class="card" >
+                    <img class="card-img-top" src="@objJuego.Portada" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@objJuego.Nombre</h5>
+                        <div class="text-center">
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="VERINFO.png" class="w-100"></a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }   
+</div>
 @* Modal *@
-<div class="modal fade" id="ModalConsola" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

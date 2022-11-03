@@ -18,15 +18,32 @@ public class BD
             ListadoConsolas = db.Query<Consola>(sql).ToList();
         }
         return ListadoConsolas;
-    } 
-    public static Consola DetalleConsola(string Consola){
+    }
+    public static List<Juego> ListarJuegos ()
+    {
+        using(SqlConnection db = new SqlConnection(_connectionstring)){
+            string sql = "SELECT * FROM Juego";
+            ListadoJuegos = db.Query<Juego>(sql).ToList();
+        }
+        return ListadoJuegos;
+    }  
+    public static Consola DetalleConsola(int IdConsola)
+    {
             Consola ConsolaElegida=null;
-            foreach (Consola objConsola in ListadoConsolas){
-                if (Consola==objConsola.Nombre){
-                    ConsolaElegida=objConsola;
-                }
-            }
+            using(SqlConnection db = new SqlConnection(_connectionstring)){
+                string sql = "SELECT * FROM Consola WHERE IdConsola=@pIdConsola";
+                ConsolaElegida = db.QueryFirstOrDefault<Consola>(sql, new {pIdConsola = IdConsola});
+        }
             System.Console.WriteLine(ConsolaElegida.Nombre);
             return ConsolaElegida;
+    }
+    public static Juego DetalleJuego(int IdJuego)
+    {
+            Juego JuegoElegido=null;
+        using(SqlConnection db = new SqlConnection(_connectionstring)){
+                string sql = "SELECT * FROM Juego WHERE IdJuego=@pIdJuego";
+            JuegoElegido = db.QueryFirstOrDefault<Juego>(sql, new {pIdJuego = IdJuego});
         }
+        return JuegoElegido;
+    }
 }

@@ -15,13 +15,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Juegos=BD.ListarJuegos();
         ViewBag.Consolas=BD.ListarConsolas();
         return View();
     }
-    public Consola MostrarInformacionAjax(string _NombreConsola)
-        {
-            return BD.DetalleConsola(_NombreConsola);
-        }
+    public Consola MostrarInformacionAjaxConsola(int _IdConsola)
+    {
+        return BD.DetalleConsola(_IdConsola);
+    }
+    public Juego MostrarInformacionAjaxJuego(int _IdJuego)
+    {
+        return BD.DetalleJuego(_IdJuego);
+    }
 
     public IActionResult Minijuego()
     {
