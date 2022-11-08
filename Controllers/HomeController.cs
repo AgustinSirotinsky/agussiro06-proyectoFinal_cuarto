@@ -19,6 +19,17 @@ public class HomeController : Controller
         ViewBag.Consolas=BD.ListarConsolas();
         return View();
     }
+    public IActionResult DetalleJuego(int IdJuego)
+    {
+        ViewBag.DetalleJuego=BD.DetalleJuego(IdJuego);
+        return View();
+    }
+    public IActionResult DetalleConsola(int IdConsola)
+    {
+        ViewBag.Juegos=BD.ListarJuegosEspecificos(IdConsola);
+        ViewBag.DetalleConsola=BD.DetalleConsola(IdConsola);
+        return View();
+    }
     public Consola MostrarInformacionAjaxConsola(int _IdConsola)
     {
         return BD.DetalleConsola(_IdConsola);

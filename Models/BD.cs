@@ -8,9 +8,10 @@ namespace agussiro06_tp9.Models;
 public class BD 
 {
     private static List<Juego> ListadoJuegos= new List<Juego>();
+    private static List<Juego> ListadoJuegosEspecificos= new List<Juego>();
     private static List<Consola> ListadoConsolas= new List<Consola>();
     //CAMBIAR SERVIDOR 
-    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-030;DataBase=ConsoleWorld;Trusted_Connection=True;";
+    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-028;DataBase=ConsoleWorld;Trusted_Connection=True;";
     public static List<Consola> ListarConsolas ()
     {
         using(SqlConnection db = new SqlConnection(_connectionstring)){
@@ -26,6 +27,14 @@ public class BD
             ListadoJuegos = db.Query<Juego>(sql).ToList();
         }
         return ListadoJuegos;
+    }
+    public static List<Juego> ListarJuegosEspecificos(int idConsola)
+    {
+        using(SqlConnection db = new SqlConnection(_connectionstring)){
+            string sql = "SELECT * FROM Juego WHERE IdConsola=@pIdConsola";
+            ListadoJuegosEspecificos = db.Query<Juego>(sql, new {pIdConsola=idConsola}).ToList();
+        }
+        return ListadoJuegosEspecificos;
     }  
     public static Consola DetalleConsola(int IdConsola)
     {

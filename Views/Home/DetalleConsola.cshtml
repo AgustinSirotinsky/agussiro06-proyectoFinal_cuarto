@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "DetalleConsola";
+}
+<div class="text-center">
+    <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340">
+</div>
+<div class="row">
+    @{
+        foreach (Juego objJuego in ViewBag.Juegos){
+            <div class="col-md-2">
+                <div class="card" >
+                    <img class="card-img-top" src="/FotoJuego/@objJuego.Portada" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@objJuego.Nombre</h5>
+                        <div class="text-center">
+                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/VERINFO2.png" class="w-100"></a>
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="/VERINFO.png" class="w-100"></a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }   
+</div>
+@* Modal *@
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Titulo-Modal">Modal Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="Informacion"></div>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

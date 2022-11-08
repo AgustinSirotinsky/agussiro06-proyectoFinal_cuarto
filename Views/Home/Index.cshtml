@@ -10,16 +10,17 @@
     @{
         foreach (Consola objConsola in ViewBag.Consolas){
             <div class="col-md-2">
-                <div class="card" >
+                <div class="card">
                     <img class="card-img-top" src="FotoConsola/@objConsola.Portada" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@objConsola.Nombre</h5>
+                            <a href ='@Url.Action("DetalleConsola","Home",new {IdConsola=objConsola.idConsola})'><img src="VERINFO2.png" class="w-100"></a>
                             <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionConsola(@objConsola.idConsola)"><img src="VERINFO.png" class="w-100"></a>
                     </div>
                 </div>
             </div>
         }
-    }   
+    }
 </div>
 <h1>Todos los juegos</h1>
 <div class="row">
@@ -31,6 +32,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@objJuego.Nombre</h5>
                         <div class="text-center">
+                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="VERINFO2.png" class="w-100"></a>
                             <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="VERINFO.png" class="w-100"></a>
                           </div>
                     </div>
