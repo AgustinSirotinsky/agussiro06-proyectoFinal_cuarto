@@ -1,16 +1,18 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 using agussiro06_tp9.Models;
 
 namespace agussiro06_tp9.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private IWebHostEnvironment Enviroment;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IWebHostEnvironment Envirmoent)
     {
-        _logger = logger;
+        Enviroment=Envirmoent;
     }
 
     public IActionResult Index()
@@ -30,6 +32,35 @@ public class HomeController : Controller
         ViewBag.DetalleConsola=BD.DetalleConsola(IdConsola);
         return View();
     }
+    public IActionResult AgregarConsola()
+    {
+        return View();
+    }
+    public IActionResult GuardarConsola(Consola Consola, IFormFile myFile)
+    {
+        System.Console.WriteLine("Peso del archivo: " + myFile.Length);
+        if (Consola.idConsola < 1)
+        {
+            ViewBag.Error = "Por favor, rellene todos los campos";
+            return View("AgregarConsola");
+        }
+    else
+        if(myFile.Length>0)
+        {
+            System.Console.WriteLine("llego algo");
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + myFile.FileName;
+            using (var stream = System.IO.File.Create(wwwRootLocal))
+            {
+                myFile.CopyToAsync(stream);
+            }
+            Consola.Portada=myFile.FileName;
+        }
+        BD.AgregarConsola(Consola);
+        ViewBag.Juegos=BD.ListarJuegos();
+        ViewBag.Consolas=BD.ListarConsolas();
+        return View("Index");
+    }
+
     public Consola MostrarInformacionAjaxConsola(int _IdConsola)
     {
         return BD.DetalleConsola(_IdConsola);

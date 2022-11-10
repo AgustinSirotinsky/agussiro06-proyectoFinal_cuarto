@@ -11,7 +11,7 @@ public class BD
     private static List<Juego> ListadoJuegosEspecificos= new List<Juego>();
     private static List<Consola> ListadoConsolas= new List<Consola>();
     //CAMBIAR SERVIDOR 
-    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-028;DataBase=ConsoleWorld;Trusted_Connection=True;";
+    private static string  _connectionstring = @"Server=A-PHZ2-CIDI-030;DataBase=ConsoleWorld;Trusted_Connection=True;";
     public static List<Consola> ListarConsolas ()
     {
         using(SqlConnection db = new SqlConnection(_connectionstring)){
@@ -54,5 +54,12 @@ public class BD
             JuegoElegido = db.QueryFirstOrDefault<Juego>(sql, new {pIdJuego = IdJuego});
         }
         return JuegoElegido;
+    }
+    public static void AgregarConsola(Consola Consola)
+    {
+        string sql="INSERT INTO Consola (Nombre,FechaSalida,Empresa,Informacion,Portada) VALUES (@pNombre,@pFechaSalida,@Empresa,@pInformacion,@pPortada)";
+        using(SqlConnection db = new SqlConnection(_connectionstring)){
+            db.Execute(sql,new {pNombre=Consola.Nombre,pFechaSalida=Consola.FechaSalida,pEmpresa=Consola.Empresa,pInformacion=Consola.Informacion,pPortada=Consola.Portada});
+        }
     }
 }

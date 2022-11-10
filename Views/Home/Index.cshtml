@@ -5,7 +5,7 @@
 <div class="text-center">
     <img src="logo.png">
 </div>
-
+<a href='@Url.Action("AgregarConsola","Home")'><center><img src="CREARCONSOLA.png" width="15%" height="15%"></center></a>
 <div class="row">
     @{
         foreach (Consola objConsola in ViewBag.Consolas){
@@ -22,7 +22,10 @@
         }
     }
 </div>
-<h1>Todos los juegos</h1>
+  <div class="text-center">
+    <h1>Todos los juegos</h1>
+  </div>
+<a href='@Url.Action("AgregarJuego","Home")'><center><img src="CREARJUEGO.png" width="15%" height="15%"></center></a>
 <div class="row">
     @{
         foreach (Juego objJuego in ViewBag.Juegos){
