@@ -39,16 +39,10 @@ public class HomeController : Controller
     public IActionResult GuardarConsola(Consola Consola, IFormFile myFile)
     {
         System.Console.WriteLine("Peso del archivo: " + myFile.Length);
-        if (Consola.idConsola < 1)
-        {
-            ViewBag.Error = "Por favor, rellene todos los campos";
-            return View("AgregarConsola");
-        }
-    else
         if(myFile.Length>0)
         {
             System.Console.WriteLine("llego algo");
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + myFile.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoConsola\" + myFile.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
                 myFile.CopyToAsync(stream);
@@ -58,7 +52,7 @@ public class HomeController : Controller
         BD.AgregarConsola(Consola);
         ViewBag.Juegos=BD.ListarJuegos();
         ViewBag.Consolas=BD.ListarConsolas();
-        return View("Index");
+        return View("index");
     }
 
     public Consola MostrarInformacionAjaxConsola(int _IdConsola)

@@ -3,19 +3,19 @@
 }
 
 <div class="text-center">
-    <img src="logo.png">
+    <img src="/logo.png">
 </div>
-<a href='@Url.Action("AgregarConsola","Home")'><center><img src="CREARCONSOLA.png" width="15%" height="15%"></center></a>
+<a href='@Url.Action("AgregarConsola","Home")'><center><img src="/CREARCONSOLA.png" width="15%" height="15%"></center></a>
 <div class="row">
     @{
         foreach (Consola objConsola in ViewBag.Consolas){
             <div class="col-md-2">
                 <div class="card">
-                    <img class="card-img-top" src="FotoConsola/@objConsola.Portada" alt="Card image cap">
+                    <img class="card-img-top" src="/FotoConsola/@objConsola.Portada" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@objConsola.Nombre</h5>
-                            <a href ='@Url.Action("DetalleConsola","Home",new {IdConsola=objConsola.idConsola})'><img src="VERINFO2.png" class="w-100"></a>
-                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionConsola(@objConsola.idConsola)"><img src="VERINFO.png" class="w-100"></a>
+                            <a href ='@Url.Action("DetalleConsola","Home",new {IdConsola=objConsola.idConsola})'><img src="/VERINFO2.png" class="w-100"></a>
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionConsola(@objConsola.idConsola)"><img src="/VERINFO.png" class="w-100"></a>
                     </div>
                 </div>
             </div>
@@ -25,18 +25,18 @@
   <div class="text-center">
     <h1>Todos los juegos</h1>
   </div>
-<a href='@Url.Action("AgregarJuego","Home")'><center><img src="CREARJUEGO.png" width="15%" height="15%"></center></a>
+<a href='@Url.Action("AgregarJuego","Home")'><center><img src="/CREARJUEGO.png" width="15%" height="15%"></center></a>
 <div class="row">
     @{
         foreach (Juego objJuego in ViewBag.Juegos){
             <div class="col-md-2">
                 <div class="card" >
-                    <img class="card-img-top" src="FotoJuego/@objJuego.Portada" alt="Card image cap">
+                    <img class="card-img-top" src="/FotoJuego/@objJuego.Portada" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@objJuego.Nombre</h5>
                         <div class="text-center">
-                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="VERINFO2.png" class="w-100"></a>
-                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="VERINFO.png" class="w-100"></a>
+                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/VERINFO2.png" class="w-100"></a>
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="/VERINFO.png" class="w-100"></a>
                           </div>
                     </div>
                 </div>
