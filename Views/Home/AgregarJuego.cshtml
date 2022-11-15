@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"]="Agregar Juego";
+}
+<form method="post" action='@Url.Action("GuardarJuego","Home")' enctype="multipart/form-data">
+    Nombre: <input type="text" name="Nombre" autocomplete="off"><br>
+    <p>
+        <label for="Consola">En que consola esta este juego?</label></br>
+        <select name="Consola" autocomplete="off">
+            @{
+                foreach(Consola objConsola in ViewBag.Consolas)
+                {
+                    <option value=@objConsola.idConsola>@objConsola.Nombre</option>
+                }
+            }
+        </select>
+    </p>
+    Empresa: <input type="text" name="Empresa" autocomplete="off"><br>
+    Mas info: <input type="text" name="Informacion" autocomplete="off"><br>
+    Archivo de la imagen: <input type="File" name="myFile"><br>
+    <button type="submit">Agregar</button>
+</form>
