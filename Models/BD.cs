@@ -55,11 +55,29 @@ public class BD
         }
         return JuegoElegido;
     }
+    public static void AgregarFavorito(int IdJuego)
+    {
+        using(SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql="UPDATE Juego SET Favorito='0' WHERE Favorito='1'";
+            db.Execute(sql,new {pIdJuego=IdJuego});
+        }
+        using(SqlConnection db=new SqlConnection(_connectionstring)){
+            string sql="UPDATE Juego SET Favorito='1' WHERE idJuego=@pIdJuego";
+            db.Execute(sql,new {pIdJuego=IdJuego});
+        }
+    }
     public static void AgregarConsola(Consola Consola)
     {
         string sql="INSERT INTO Consola (Nombre,FechaSalida,Empresa,Informacion,Portada) VALUES (@pNombre,@pFechaSalida,@pEmpresa,@pInformacion,@pPortada)";
         using(SqlConnection db = new SqlConnection(_connectionstring)){
             db.Execute(sql,new {pNombre=Consola.Nombre,pFechaSalida=Consola.FechaSalida,pEmpresa=Consola.Empresa,pInformacion=Consola.Informacion,pPortada=Consola.Portada});
+        }
+    }
+    public static void AgregarJuego(Juego Juego)
+    {
+        string sql="INSERT INTO Juego (Nombre,idConsola,FechaSalida,Desarrolladora,Informacion,Portada) VALUES (@pNombre,@pidConsola,@pFechaSalida,@pDesarrolladora,@pInformacion,@pPortada)";
+         using(SqlConnection db = new SqlConnection(_connectionstring)){
+            db.Execute(sql,new {pNombre=Juego.Nombre,pidConsola=Juego.idConsola,pFechaSalida=Juego.FechaSalida,pDesarrolladora=Juego.Desarrolladora,pInformacion=Juego.Informacion,pPortada=Juego.Portada});
         }
     }
 }

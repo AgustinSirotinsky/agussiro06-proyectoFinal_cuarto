@@ -5,8 +5,7 @@
     <img src="/FotoJuego/@ViewBag.DetalleJuego.Portada" alt="@ViewBag.DetalleJuego.Nombre" width="340" height="340">
     <h1>@ViewBag.DetalleJuego.Nombre</h1>
 </div>
-<div class="texto">
-    <div class="text-left">
-        <h4>@ViewBag.DetalleJuego.Informacion</h4>
-    </div>
+<div class="cotainer-fluid">
+    <h4>@ViewBag.DetalleJuego.Informacion</h4>
 </div>
+<a href ='@Url.Action("AgregarFavorito","Home",new {IdJuego=@ViewBag.DetalleJuego.IdJuego})'><img src="/botones/AGREGARFAVORITO.png"></a>

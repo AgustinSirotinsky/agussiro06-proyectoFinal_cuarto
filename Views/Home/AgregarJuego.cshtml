@@ -5,16 +5,17 @@
     Nombre: <input type="text" name="Nombre" autocomplete="off"><br>
     <p>
         <label for="Consola">En que consola esta este juego?</label></br>
-        <select name="Consola" autocomplete="off">
+        <select name="Consola" id="Consola">
             @{
                 foreach(Consola objConsola in ViewBag.Consolas)
                 {
                     <option value=@objConsola.idConsola>@objConsola.Nombre</option>
+                    <h1>aa</h1>
                 }
             }
         </select>
     </p>
-    Fecha de salida: <input type="text" name="FechaSalida" autocomplete="off"><br>
+    Fecha de salida: <input type="Date" name="FechaSalida" autocomplete="off"><br>
     Desarrolladora: <input type="text" name="Desarrolladora" autocomplete="off"><br>
     Mas info: <input type="text" name="Informacion" autocomplete="off"><br>
     Archivo de la imagen: <input type="File" name="myFile"><br>

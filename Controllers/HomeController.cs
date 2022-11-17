@@ -64,13 +64,23 @@ public class HomeController : Controller
          if(myfile.Length>0)
         {
             System.Console.WriteLine("llego algo");
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoConsola\" + myfile.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoJuego\" + myfile.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
                 myfile.CopyToAsync(stream);
             }
             Juego.Portada=myfile.FileName;
         }
+        BD.AgregarJuego(Juego);
+        ViewBag.Juegos=BD.ListarJuegos();
+        ViewBag.Consolas=BD.ListarConsolas();
+        return View("index");
+    }
+    public IActionResult AgregarFavorito(int idJuego)
+    {
+        BD.AgregarFavorito(idJuego);
+        ViewBag.Juegos=BD.ListarJuegos();
+        ViewBag.Consolas=BD.ListarConsolas();
         return View("index");
     }
     public Consola MostrarInformacionAjaxConsola(int _IdConsola)
