@@ -4,8 +4,10 @@
 <div class="text-center">
     <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340">
 </div>
-@ViewBag.DetalleConsola.idConsola
+
+  @ViewBag.DetalleConsola.idConsola
   <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png" class="w-100"></a>
+
 <div class="row">
     @{
         foreach (Juego objJuego in ViewBag.Juegos){
