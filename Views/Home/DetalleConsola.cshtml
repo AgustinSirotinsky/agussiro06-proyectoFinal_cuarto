@@ -2,11 +2,10 @@
     ViewData["Title"] = "DetalleConsola";
 }
 <div class="text-center">
-    <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340">
+    <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340"></br>
+    <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png"></a>
 </div>
 
-  @ViewBag.DetalleConsola.idConsola
-  <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png" class="w-100"></a>
 
 <div class="row">
     @{
