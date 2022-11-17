@@ -59,6 +59,20 @@ public class HomeController : Controller
             ViewBag.Consolas=BD.ListarConsolas();
             return View();
         }
+    public IActionResult GuardarJuego(Juego Juego, IFormFile myfile)
+    {
+         if(myfile.Length>0)
+        {
+            System.Console.WriteLine("llego algo");
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoConsola\" + myfile.FileName;
+            using (var stream = System.IO.File.Create(wwwRootLocal))
+            {
+                myfile.CopyToAsync(stream);
+            }
+            Juego.Portada=myfile.FileName;
+        }
+        return View("index");
+    }
     public Consola MostrarInformacionAjaxConsola(int _IdConsola)
     {
         return BD.DetalleConsola(_IdConsola);
