@@ -5,7 +5,7 @@
     <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340">
 </div>
 @ViewBag.DetalleConsola.idConsola
-  <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/VERINFO2.png" class="w-100"></a>
+  <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png" class="w-100"></a>
 <div class="row">
     @{
         foreach (Juego objJuego in ViewBag.Juegos){
@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@objJuego.Nombre</h5>
                         <div class="text-center">
-                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/VERINFO2.png" class="w-100"></a>
+                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/Botones/VERINFO2.png" class="w-100"></a>
                             <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="/VERMODAL.png" class="w-100"></a>
                           </div>
                     </div>
