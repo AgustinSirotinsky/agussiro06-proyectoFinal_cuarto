@@ -3,15 +3,15 @@ namespace agussiro06_tp9.Models;
 
 public class Usuario
 {
-    private int _idusuario; string _nombre; string _foto; DateTime _fechacreacion; string _informacion; 
+    private int _idusuario; string _nombre; string _portada; DateTime _fechacreacion; string _informacion; 
     public Usuario(){}
-    public Usuario(int pidusuario, string pnombre, string pfoto, DateTime pfechacreacion, string pinformacion)
+    public Usuario(int pidusuario, string pnombre, string pportada, DateTime pfechacreacion, string pinformacion)
     {
-        idUsuario=pidusuario;
-        Nombre=pnombre;
-        Foto=pfoto;
-        FechaCreacion=pfechacreacion;
-        Informacion=pinformacion;
+        _idusuario=pidusuario;
+        _nombre=pnombre;
+        _portada=pportada;
+        _fechacreacion=pfechacreacion;
+        _informacion=pinformacion;
     }
     public int idUsuario
     {
@@ -23,10 +23,10 @@ public class Usuario
         get{return _nombre;}
         set{_nombre=value;}
     }
-    public string Foto
+    public string Portada
     {
-        get{return _foto;}
-        set{_foto=value;}
+        get{return _portada;}
+        set{_portada=value;}
     }
     public DateTime FechaCreacion
     {

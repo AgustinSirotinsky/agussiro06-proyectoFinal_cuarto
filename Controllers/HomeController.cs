@@ -21,6 +21,12 @@ public class HomeController : Controller
         ViewBag.Consolas=BD.ListarConsolas();
         return View();
     }
+    public IActionResult Usuario()
+    {
+        ViewBag.JuegoFavorito=BD.DetalleFavorito();
+        ViewBag.Usuario=BD.TraerUsuario();
+        return View();
+    }
     public IActionResult DetalleJuego(int IdJuego)
     {
         ViewBag.DetalleJuego=BD.DetalleJuego(IdJuego);
@@ -65,6 +71,7 @@ public class HomeController : Controller
         {
             System.Console.WriteLine("llego algo");
             string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoJuego\" + myfile.FileName;
+            System.IO.File.Delete(wwwRootLocal);
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
                 myfile.CopyToAsync(stream);
@@ -92,13 +99,19 @@ public class HomeController : Controller
         return BD.DetalleJuego(_IdJuego);
     }
 
-    public IActionResult Minijuego()
+    public IActionResult BorrarConsola(int idConsola)
     {
-        return View();
+        BD.BorrarConsola(idConsola);
+        ViewBag.Juegos=BD.ListarJuegos();
+        ViewBag.Consolas=BD.ListarConsolas();
+        return View("index");
     }
-    public IActionResult Usuario()
+    public IActionResult BorrarJuego(int idJuego)
     {
-        return View();
+        BD.BorrarJuego(idJuego);
+        ViewBag.Juegos=BD.ListarJuegos();
+        ViewBag.Consolas=BD.ListarConsolas();
+        return View("index");
     }
 
     public IActionResult Privacy()

@@ -2,8 +2,10 @@
     ViewData["Title"] = "DetalleConsola";
 }
 <div class="text-center">
+    <h1>@ViewBag.DetalleConsola.Nombre</h1>
     <img src="/FotoConsola/@ViewBag.DetalleConsola.Portada" alt="@ViewBag.DetalleConsola.Nombre" width="340" height="340"></br>
-    <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png"></a>
+    <h3>@ViewBag.DetalleConsola.FechaSalida.ToShortDateString()</h3>
+    <h3>@ViewBag.DetalleConsola.Empresa</h3>
 </div>
 
 
@@ -16,14 +18,18 @@
                     <div class="card-body">
                         <h5 class="card-title">@objJuego.Nombre</h5>
                         <div class="text-center">
-                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/Botones/VERINFO2.png" class="w-100"></a>
-                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="/VERMODAL.png" class="w-100"></a>
+                            <a href ='@Url.Action("DetalleJuego","Home",new {IdJuego=objJuego.IdJuego})'><img src="/Botones/VERINFO.png" class="w-100"></a>
+                            <a href data-toggle="modal" data-target="#Modal" onclick="MostrarInformacionJuego(@objJuego.IdJuego)"><img src="/Botones/VERMODAL.png" class="w-100"></a>
                           </div>
                     </div>
                 </div>
             </div>
         }
     }   
+</div>
+</br>
+<div class="text-center">
+    <a href ='@Url.Action("BorrarConsola","Home",new {IdConsola=@ViewBag.DetalleConsola.idConsola})'><img src="/botones/BORRARCONSOLA.png"></a>
 </div>
 @* Modal *@
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
