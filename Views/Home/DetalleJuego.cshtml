@@ -2,8 +2,10 @@
     ViewData["Title"] = "DetalleJuego";
 }
 <div class="text-center">
-    <img src="/FotoJuego/@ViewBag.DetalleJuego.Portada" alt="@ViewBag.DetalleJuego.Nombre" width="340" height="340">
     <h1>@ViewBag.DetalleJuego.Nombre</h1>
+    <img src="/FotoJuego/@ViewBag.DetalleJuego.Portada" alt="@ViewBag.DetalleJuego.Nombre" width="340" height="340">
+    <h3>@ViewBag.DetalleJuego.FechaSalida.ToShortDateString()</h3>
+    <h3>@ViewBag.DetalleJuego.Desarrolladora</h3>
 </div>
     <div class="text-left" style="color: #FFFFFF;">
         <h4>@ViewBag.DetalleJuego.Informacion</h4>
