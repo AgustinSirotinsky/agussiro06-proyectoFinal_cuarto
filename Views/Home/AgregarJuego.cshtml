@@ -2,10 +2,13 @@
     ViewData["Title"]="Agregar Juego";
 }
 <form method="post" action='@Url.Action("GuardarJuego","Home")' enctype="multipart/form-data">
-    Nombre: <input type="text" name="Nombre" autocomplete="off"><br>
+   <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" autocomplete="off">
+    </div>
     <p>
-        <label for="Consola">En que consola esta este juego?</label></br>
-        <select name="idConsola" id="Consola">
+        <label for="Consola">Consola</label></br>
+        <select name="idConsola" id="Consola" class="form-control">
             @{
                 foreach(Consola objConsola in ViewBag.Consolas)
                 {
@@ -15,9 +18,19 @@
             }
         </select>
     </p>
-    Fecha de salida: <input type="Date" name="FechaSalida" autocomplete="off"><br>
-    Desarrolladora: <input type="text" name="Desarrolladora" autocomplete="off"><br>
-    Mas info: <input type="text" name="Informacion" autocomplete="off"><br>
-    Archivo de la imagen: <input type="File" name="myFile"><br>
-    <button type="submit">Agregar</button>
+    <div class="form-group">
+        <label for="FechaSalida">Fecha de salida</label>
+        <input type="Date" class="form-control" name="FechaSalida" id="FechaSalida" placeholder="Fecha de salida" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="Desarrolladora">Desarrolladora</label>
+        <input type="text" class="form-control" name="Desarrolladora" id="Desarrolladora" placeholder="Desarrolladora" autocomplete="off">
+    </div>
+   <div class="form-group">
+        <label for="Informacion">Informacion</label>
+        <input type="text" class="form-control" name="Informacion" id="Informacion" placeholder="Informacion" autocomplete="off">
+    </div>
+    Portada</br>
+    <input type="File" name="myFile"></br></br>
+    <button type="submit"class="btn btn-primary">Agregar</button>
 </form>

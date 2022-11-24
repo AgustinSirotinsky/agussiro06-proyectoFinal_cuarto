@@ -47,7 +47,6 @@ public class HomeController : Controller
         System.Console.WriteLine("Peso del archivo: " + myFile.Length);
         if(myFile.Length>0)
         {
-            System.Console.WriteLine("llego algo");
             string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\FotoConsola\" + myFile.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
@@ -58,6 +57,7 @@ public class HomeController : Controller
         BD.AgregarConsola(Consola);
         ViewBag.Juegos=BD.ListarJuegos();
         ViewBag.Consolas=BD.ListarConsolas();
+        System.Console.WriteLine("llego y deberia andar pero no anda bueno ahora si anda no se que hice pero anda gracias dios adonai alojam melej aleinu");
         return View("index");
     }
     public IActionResult AgregarJuego()
